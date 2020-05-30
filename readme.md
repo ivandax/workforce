@@ -8,7 +8,7 @@ To start the mongoDB database, navigate to the folder on your PC where the "data
 
 On the terminal, execute:
 
-mongod --dbpath=data --bind_ip 127.0.0.1
+mongod --dbpath=workforce --bind_ip 127.0.0.1
 
 This should get the database server up and running.
 
