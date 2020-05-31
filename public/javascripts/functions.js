@@ -1,10 +1,10 @@
 console.log("functions");
 
 const endpoints = {
-    signup: "http://localhost:3000/users/signup",
-    login: "http://localhost:3000/users/login",
+    signup: "https://simpleprofiles.ew.r.appspot.com/users/signup",
+    login: "https://simpleprofiles.ew.r.appspot.com/users/login",
     // logout: "http://localhost:3000/users/logout",
-    profiles: "http://localhost:3000/profiles"
+    profiles: "https://simpleprofiles.ew.r.appspot.com/profiles"
 }
 
 const get = (id) => {
@@ -61,7 +61,7 @@ get("loginForm") && get("loginForm").addEventListener("submit", async (event)=>{
             localStorage.setItem("token", data.token);
             get('message').innerHTML = data.status;
             //console.log(data)
-            window.location.href = "http://localhost:3000/operations.html"
+            window.location.href = "https://simpleprofiles.ew.r.appspot.com/operations.html"
         } catch(e){
             get('message').innerHTML = "Error in log in. Try Create Account";
         }

@@ -55,3 +55,8 @@ const dbname = 'nameOfyourDB';
 MongoClient.connect(url, (err, client) => {
  ...
 }
+
+# Setting up a mongoDB cluster to have your DB on the cloud
+
+This tutorial was helpful: https://cloud.google.com/community/tutorials/mongodb-atlas-appengineflex-nodejs-app
+
