@@ -41,3 +41,39 @@ a {
   padding: 4px;
 }
 
+.operationBlock{
+  padding: 20px;
+  border: black 2px solid;
+  border-radius: 8px;
+  width: 350px;
+  max-width: 350px;
+
+  background-color: white;
+}
+
+#results{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width:100%;
+}
+
+#results div{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#results p{
+  font-size: 14px;
+}
+
+#messagePost{
+  color: blue;
+  padding: 8px;
+}
+
+#messageGet{
+  color: blue;
+  padding: 8px;
+}

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const authenticate = require('../authenticate');
 
 const Profiles = require('../models/profiles');
 
@@ -18,7 +19,7 @@ get( (req, res, next)=>{ //getting or reading from database
     }, (err)=>{next(err)})
     .catch((err)=>{next(err)});
 }).
-post((req,res,next)=>{ //posting new item to collection
+post(authenticate.verifyUser, (req,res,next)=>{ //posting new item to collection
     Profiles.create(req.body)
     .then((profile)=>{
         console.log("Post of profile ",profile);
@@ -28,12 +29,12 @@ post((req,res,next)=>{ //posting new item to collection
     }, (err)=>{next(err)})
     .catch((err)=>{next(err)});
 }).
-put((req,res,next)=>{
+put(authenticate.verifyUser, (req,res,next)=>{
     res.statusCode = 403; //no updating on a whole collection, not supported
     res.end("Put operation not supported")
 }).
-delete((req,res,next)=>{ //dangerous op
-    Profiles.remove({})
+delete(authenticate.verifyUser, (req,res,next)=>{ //dangerous op
+    Profiles.deleteMany({})
     .then((resp)=>{
         res.statusCode = 200;
         res.setHeader('Content-Type','application/json');
@@ -54,23 +55,23 @@ get((req, res, next)=>{
     }, (err)=>{next(err)})
     .catch((err)=>{next(err)});
 }).
-post((req,res,next)=>{
+post(authenticate.verifyUser, (req,res,next)=>{
     res.statusCode = 403;
     res.end("Post operation on single item not supported - "+req.params.profileId);
 }).
-put((req,res,next)=>{
+put(authenticate.verifyUser, (req,res,next)=>{
     Profiles.findByIdAndUpdate(req.params.profileId, {
         $set: req.body
     }, {new: true})
     .then((profile)=>{
-        console.log("Post of Promo ",profile);
+        console.log("Put on profile ",profile);
         res.statusCode = 200;
         res.setHeader('Content-Type','application/json');
         res.json(profile);
     }, (err)=>{next(err)})
     .catch((err)=>{next(err)});
 }).
-delete((req,res,next)=>{
+delete(authenticate.verifyUser, (req,res,next)=>{
     Profiles.findByIdAndRemove(req.params.profileId)
     .then((profile)=>{
         console.log("Delete of Promo ",profile);

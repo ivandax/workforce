@@ -2,12 +2,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operations</title>
+    <title>Operations - Profiles</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 <body>
-    Operations
-    <form action="http://localhost:3000/users/logout" method="get">
+    <div class="container operations">
+        <h2>Operations</h2>
+        <form class="operationBlock" id="getForm">
+            <h2>GET</h2>
+            <p>Works without authentication</p>
+            <button id="getProfiles">
+                Get Profiles
+            </button>
+            <div id="results">
+            </div>
+            <div id="messageGet"></div>
+        </form> 
+        <form class="operationBlock" id="postForm">
+            <h2>POST</h2>
+            <p>Works only when authenticated</p>
+            <label>
+                Name:
+                <input id="name" type="text"/>
+            </label>
+            <label>
+                Occupation:
+                <input id="occupation" type="text"/>
+            </label> 
+            <button type="submit">Post Profile</button>
+            <div id="messagePost"></div> 
+        </form>
+        <a href="/index.html">Home</a>  
+    </div>
+    <!-- <form id="logoutForm">
         <button type="submit">Logout</button>
-    </form>  
+    </form>   -->
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./javascripts/functions.js"></script>
+<script src="./javascripts/operations.js"></script>
 </html>
